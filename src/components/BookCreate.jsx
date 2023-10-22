@@ -12,7 +12,8 @@ const BookCreate = ({ onCreate }) => {
   // submit form handler
   const handleSubmit = (event) => {
     event.preventDefault();
-    onCreate(title);
+
+    if (title !== "") onCreate(title);
 
     // text input cleaning
     setTitle("");
