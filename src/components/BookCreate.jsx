@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-const BookCreate = ({ onCreate }) => {
+// context
+import BooksContext from "../context/books";
+
+const BookCreate = () => {
   // this state stores the title of the new book to add
   const [title, setTitle] = useState("");
+
+  const { createBook } = useContext(BooksContext);
 
   // event handler for input text
   const handleChange = (event) => {
@@ -13,7 +18,7 @@ const BookCreate = ({ onCreate }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (title !== "") onCreate(title);
+    if (title !== "") createBook(title);
 
     // text input cleaning
     setTitle("");

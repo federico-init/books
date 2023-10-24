@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+// context
+import BooksContext from "../context/books";
 
 // components
 import BookEdit from "./BookEdit";
 
-const BookShow = ({ book, onDelete, onEdit }) => {
+const BookShow = ({ book }) => {
   const [showEdit, setShowEdit] = useState(false);
+
+  const { deleteBookById } = useContext(BooksContext);
 
   // event handler for click on delete button
   const handleDeleteClick = () => {
-    onDelete(book.id);
+    deleteBookById(book.id);
   };
 
   // event handler for click on edit button
@@ -16,11 +21,9 @@ const BookShow = ({ book, onDelete, onEdit }) => {
     setShowEdit((prev) => !prev);
   };
 
-  // function that will update book title && close edit form
-  const handleSubmit = (id, newTitle) => {
+  // function that will close edit form upon user submission
+  const handleSubmit = () => {
     setShowEdit(false);
-
-    onEdit(id, newTitle);
   };
 
   return (
