@@ -1,14 +1,14 @@
-import { useEffect, useContext } from "react";
-
-// context
-import BooksContext from "./context/books";
+import { useEffect } from "react";
 
 // components
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
+// custom hook
+import useBooksContext from "./hooks/useBooksContext";
+
 function App() {
-  const { fetchBooks } = useContext(BooksContext);
+  const { fetchBooks } = useBooksContext();
 
   // useEffect will get data from api server after the component is rendered the first time
   useEffect(() => {

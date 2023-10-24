@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-// context
-import BooksContext from "../context/books";
+// custom hook
+import useBooksContext from "../hooks/useBooksContext";
 
 const BookCreate = () => {
   // this state stores the title of the new book to add
   const [title, setTitle] = useState("");
 
-  const { createBook } = useContext(BooksContext);
+  const { createBook } = useBooksContext;
 
   // event handler for input text
   const handleChange = (event) => {
