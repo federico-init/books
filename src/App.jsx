@@ -13,7 +13,7 @@ function App() {
   // useEffect will get data from api server after the component is rendered the first time
   useEffect(() => {
     fetchBooks();
-  }, []);
+  }, [fetchBooks]);
 
   return (
     <div className="app">

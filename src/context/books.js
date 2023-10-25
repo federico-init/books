@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 import axios from "axios";
 
@@ -9,11 +9,11 @@ function Provider({ children }) {
   const [books, setBooks] = useState([]);
 
   // function that retrieves books data from the api server
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     const res = await axios.get("http://localhost:3001/books");
 
     setBooks(res.data);
-  };
+  }, []);
 
   // function that will create and add the new book to our state
   const createBook = async (title) => {
@@ -28,7 +28,7 @@ function Provider({ children }) {
 
   // function that will delete the selected book
   const deleteBookById = async (id) => {
-    const res = await axios.delete(`http://localhost:3001/books/${id}`);
+    await axios.delete(`http://localhost:3001/books/${id}`);
 
     const updatedBooks = books.filter((book) => {
       return book.id !== id;
