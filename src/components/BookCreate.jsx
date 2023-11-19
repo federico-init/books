@@ -7,7 +7,7 @@ const BookCreate = () => {
   // this state stores the title of the new book to add
   const [title, setTitle] = useState("");
 
-  const { createBook } = useBooksContext;
+  const { createBook } = useBooksContext();
 
   // event handler for input text
   const handleChange = (event) => {
